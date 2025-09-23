@@ -4,8 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+pandas = "*"
+matplotlib = "*"
+seaborn = "*"
+scipy = "*"
+imblearn = "*"
+lightgbm = "*"
+shap = "*"
+xgboost = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.10"
