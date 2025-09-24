@@ -1,1 +1,1 @@
-# Smart-Water-Distribution-Optimization
+# Smart Water Distribution Optimization
