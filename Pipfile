@@ -12,6 +12,8 @@ imblearn = "*"
 lightgbm = "*"
 shap = "*"
 xgboost = "*"
+groq = "*"
+python-dotenv = "*"
 
 [dev-packages]
 ipykernel = "*"
