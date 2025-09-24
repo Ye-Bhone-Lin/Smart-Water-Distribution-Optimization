@@ -1,14 +1,18 @@
+import streamlit as st
 import requests
 from groq import Groq
 from dotenv import load_dotenv
-import os 
+import os
 
+# Load environment variables
 load_dotenv()
+groq_api_key = os.getenv("GROQ_API_KEY")
+client = Groq(api_key=groq_api_key)
 
+# Function to fetch USGS water data
 def get_usgs_water_data(site_id="01646500"):
     """
     Fetch real-time water data from USGS for a given site.
-    site_id: USGS gauge ID (default: Potomac River at Point of Rocks, MD)
     """
     url = f"https://waterservices.usgs.gov/nwis/iv/?format=json&sites={site_id}&parameterCd=00060,00065&siteStatus=all"
     resp = requests.get(url)
@@ -17,7 +21,7 @@ def get_usgs_water_data(site_id="01646500"):
     
     data = resp.json()
     results = {}
-    for ts in data["value"]["timeSeries"]:
+    for ts in data.get("value", {}).get("timeSeries", []):
         variable = ts["variable"]["variableName"]
         if ts["values"] and ts["values"][0]["value"]:
             value = ts["values"][0]["value"][-1]["value"]
@@ -25,23 +29,25 @@ def get_usgs_water_data(site_id="01646500"):
             results[variable] = (value, time)
     return results
 
-groq_api_key = os.getenv("GROQ_API_KEY")
+# Streamlit app
+st.title("💧 USGS Water Condition Chatbot")
+st.write("Enter a USGS site ID to get the latest water conditions and insights.")
 
-client = Groq(api_key=groq_api_key)
-def chatbot():
-    print("💧 Water Condition Chatbot (type 'quit' to exit)")
-    while True:
-        user = input("You: ")
-        if user.lower() == "quit":
-            print("Bot: Goodbye!")
-            break
+site_id = st.text_input("Site ID", value="01646500")
 
-        site = "01646500"  # Change this to any USGS site ID as needed
-        data = get_usgs_water_data(site)
-
-        if isinstance(data, dict):
-            print("Bot: Here is the latest water update:")
+if st.button("Get Water Update"):
+    if not site_id:
+        st.warning("Please enter a valid site ID.")
+    else:
+        st.info("Fetching data...")
+        data = get_usgs_water_data(site_id)
+        
+        if isinstance(data, dict) and data:
+            st.success("Here is the latest water update:")
             for var, (val, ts) in data.items():
+                st.write(f"**{var}**: {val} at {ts}")
+
+                # Generate insights using Groq API
                 completion = client.chat.completions.create(
                     model="openai/gpt-oss-120b",
                     messages=[
@@ -55,20 +61,12 @@ def chatbot():
                         },
                     ],
                     temperature=1,
-                    max_completion_tokens=8192,
+                    max_completion_tokens=1024,
                     top_p=1,
-                    reasoning_effort="medium",
-                    stream=True,
-                    stop=None
+                    reasoning_effort="medium"
                 )
 
-                print("Insights:", end=" ")
-                for chunk in completion:
-                    if chunk.choices[0].delta.content:
-                        print(chunk.choices[0].delta.content, end="", flush=True)
-
+                insights = completion.choices[0].message.content
+                st.markdown(f"**Insights:** {insights}")
         else:
-            print("Bot:", data)
-
-if __name__ == "__main__":
-    chatbot()
+            st.error(f"Could not fetch data: {data}")
