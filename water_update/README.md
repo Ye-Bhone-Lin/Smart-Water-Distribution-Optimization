@@ -10,6 +10,10 @@ This feature provides a command-line chatbot that delivers real-time water condi
 - Customizable USGS site ID.
 - system + user role prompt
 
+## Workflow 
+![alt text](workflow/water_upd.svg)
+*Figure 1 Workflow for Real-Time Water Condition*
+
 ## How It Works
 
 1. The chatbot fetches water data from the USGS API for a given site.

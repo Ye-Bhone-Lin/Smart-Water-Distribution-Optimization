@@ -17,6 +17,9 @@ This feature demonstrates a machine learning workflow for predicting water pump 
 
 ## Workflow Overview
 
+![alt text](workflow/water_pump.svg)
+*Figure 1 Workflow for Water Pump Maintenance*
+
 1. **Data Loading & Exploration**
 	- Loads sensor data from `data/sensor.csv`.
 	- Explores data shape, missing values, and basic info.
