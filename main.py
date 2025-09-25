@@ -43,7 +43,7 @@ if page == "Pump Maintenance":
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
         pump_model = PumpMaintenanceModel(
-            "/Users/yebhonelin/Documents/github/Smart-Water-Distribution-Optimization/water_pump_maintenance/rf_model.pkl"
+            "water_pump_maintenance/rf_model.pkl"
         )
 
         try:
@@ -129,7 +129,7 @@ elif page == "Leak Prediction":
         raw_data = pd.read_csv(uploaded_file)
 
         leak_model = Leak_Model(
-            "/Users/yebhonelin/Documents/github/Smart-Water-Distribution-Optimization/leak_prediction/leak_detection_model.pkl"
+            "leak_prediction/leak_detection_model.pkl"
         )
         probs = leak_model.predict_proba(raw_data)
         raw_data["Leak_Probability"] = probs
