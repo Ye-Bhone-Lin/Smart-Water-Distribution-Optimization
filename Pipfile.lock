@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "282b8819c1ada5cc748201cdc666c6495d296b5f7d77720c5b388e382cee573f"
+            "sha256": "b2e5dc71cb7d8f6d26cb9e7945381b42337b45523f544eb258fc4b1aa08ba56c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -1542,6 +1542,15 @@
             "index": "pypi",
             "markers": "python_version >= '3.9' and python_full_version != '3.9.7'",
             "version": "==1.50.0"
+        },
+        "streamlit-chat": {
+            "hashes": [
+                "sha256:bec918a6ff9d24fbc842d5a0e7c492e30e1ef71c3a72b94b0cb4be1a7300881e",
+                "sha256:e5911c8e3d5bbdd444782a0eb46a5f0cf24247124eb165bcc2e759540767ac3c"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.6'",
+            "version": "==0.1.1"
         },
         "tenacity": {
             "hashes": [

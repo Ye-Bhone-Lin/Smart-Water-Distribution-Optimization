@@ -15,6 +15,7 @@ xgboost = "*"
 groq = "*"
 python-dotenv = "*"
 streamlit = "*"
+streamlit-chat = "*"
 
 [dev-packages]
 ipykernel = "*"
