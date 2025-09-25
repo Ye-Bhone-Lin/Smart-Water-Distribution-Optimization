@@ -3,6 +3,10 @@
 ## Overview
 Smart Water Distribution Optimization is an award-winning solution designed to detect and predict leaks in water treatment systems using advanced machine learning techniques. This project leverages real-world data and state-of-the-art models to help utilities minimize water loss and improve operational efficiency.
 
+## Workflow 
+![alt text](workflow/leak_flow.svg)
+*Figure 1 Workflow of Leak Prediction*
+
 ## Features
 - Leak detection and prediction using LightGBM, SVC and XGBoost classifiers
 - Data preprocessing and handling of missing values based on distribution analysis
@@ -11,10 +15,10 @@ Smart Water Distribution Optimization is an award-winning solution designed to d
 - Model performance evaluation with classification reports and confusion matrices
 
 ![alt text](images/image.png)
-*Figure 1 Imbalanced Class*
+*Figure 2 Imbalanced Class*
 
 ![alt text](images/shap_image.png)
-*Figure 2 Important Features*
+*Figure 3 Important Features*
 
 ## Dataset
 The project uses the [UCI Water Treatment Plant Dataset](https://archive.ics.uci.edu/ml/datasets/Water+Treatment+Plant), which contains time-series measurements from a real water treatment facility. The dataset is included in the `leak_prediction/data/` folder:
