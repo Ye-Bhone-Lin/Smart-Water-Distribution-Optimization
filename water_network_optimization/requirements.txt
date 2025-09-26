@@ -4,3 +4,6 @@ networkx
 streamlit
 pulp
 folium
+plotly
+geopy
+scipy
