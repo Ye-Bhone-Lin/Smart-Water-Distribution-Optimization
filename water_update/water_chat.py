@@ -37,7 +37,7 @@ class WaterDataBot:
         """
         try:
             completion = self.client.chat.completions.create(
-                model="openai/gpt-oss-120b",
+                model="llama-3.3-70b-versatile",
                 messages=[
                     {
                         "role": "system",
@@ -49,7 +49,6 @@ class WaterDataBot:
                     },
                 ],
                 temperature=1,
-                max_completion_tokens=1024,
                 top_p=1,
                 reasoning_effort="medium"
             )
