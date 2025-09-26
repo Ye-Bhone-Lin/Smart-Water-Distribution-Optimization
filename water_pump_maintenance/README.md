@@ -69,6 +69,7 @@ Install dependencies using pip or your preferred environment manager.
 - `rf_model.pkl`: Output trained model.
 
 ## Result
+### Random Forest Classifier
 
                precision    recall  f1-score  support
 
@@ -79,6 +80,19 @@ Install dependencies using pip or your preferred environment manager.
     accuracy                         1.00     106538
     macro avg    1.00      1.00      1.00     106538
     weighted avg 1.00      1.00      1.00     106538
+
+### Decision Tree Classifier
+
+               precision    recall  f1-score   support
+
+     BROKEN       0.94      0.92      0.93     51460
+     NORMAL       0.91      0.94      0.93     51459
+ RECOVERING       0.85      0.80      0.82      3619
+
+    accuracy                           0.92    106538
+   macro avg       0.90      0.89      0.89    106538
+weighted avg       0.92      0.92      0.92    106538
+
 
 References:
 
