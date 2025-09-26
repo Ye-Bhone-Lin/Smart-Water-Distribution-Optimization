@@ -15,7 +15,7 @@ import pandas as pd
 from scipy.spatial import ConvexHull
 from geopy.distance import geodesic
 
-#st.secrets['GROQ_API_KEY']
+st.secrets['GROQ_API_KEY']
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
